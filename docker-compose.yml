@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  #Name of the app
+  app:
+    #Starting from root folder
+    build:
+      context: .
+    #8000 tousand to our port, 8000 to image port
+    ports:
+      - "8000:8000"
+    #Makes live changes to docker image file
+    #Mapps app from root directory to image app
+    volumes:
+      - "./app:/app"
+    command: >
+       sh -c "python manage.py runserver 0.0.0.0:8000"
